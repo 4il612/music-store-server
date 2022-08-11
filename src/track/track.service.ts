@@ -22,7 +22,8 @@ export class TrackService{
     }
 
     async getAll(){
-
+        const tracks = await this.trackModel.find()
+        return tracks
     }
 
     async getOne(){
