@@ -8,7 +8,7 @@ export type CommentDocument = Comment & Document;
 @Schema()
 export class Comment {
     @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Track'})
-    track: Track;
+    trackId: Track;
 
     @Prop()
     username: string;
