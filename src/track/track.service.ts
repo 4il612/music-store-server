@@ -31,6 +31,18 @@ export class TrackService{
         return tracks
     }
 
+    async search(query: string): Promise<Track[]>{
+        let tracks = await this.trackModel.find({
+            $or: [
+                {title: new RegExp(query, 'i')},
+                {author: new RegExp(query, 'i')}
+            ]
+            
+        })
+        
+        return tracks
+    }
+
     async getOne(id: ObjectId): Promise<Track>{
         const track = await (await this.trackModel.findById(id)).populate('comments')
         return track
