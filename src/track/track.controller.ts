@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, UploadedFiles, UseInterceptors } from "@nestjs/common";
+import { Query, Body, Controller, Delete, Get, Param, Post, UploadedFiles, UseInterceptors } from "@nestjs/common";
 import { FileFieldsInterceptor } from "@nestjs/platform-express";
 import { ObjectId } from "mongoose";
 import { CreateCommentDto } from "./dto/createComment.dto";
@@ -22,8 +22,8 @@ export class TrackController{
     }
 
     @Get()
-    getAll(){
-        return this.trackService.getAll()
+    getAll(@Query('limit') limit: number, @Query('offset') offset: number){
+        return this.trackService.getAll(limit, offset)
     }
 
     @Get(':id')
