@@ -20,7 +20,7 @@ export class Track {
     listenCount: number;
 
     @Prop()
-    image: string;
+    preview: string;
 
     @Prop()
     audio: string;
